@@ -2,7 +2,7 @@
 
 ##k8s集群中配置
 >1，集群中只需要起个LB类型的service，起service的yaml文件中，只需指定EIP即可。例子如文件夹中myweb-svc.yaml 和 rc.yaml
->2，pod所在node节点上配置如下路由规则，以捕获eip方式的服务请求
+>2，pod所在node节点上配置如下路由规则，以捕获eip方式的服务请求(该node配lo规则后，该node上将不能通过eip访问service)
 ip route replace local 0/0 dev lo table 100
 ip rule add to 139.198.14.0/24 lookup 100
 
